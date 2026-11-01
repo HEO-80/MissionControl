@@ -7,44 +7,52 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>⚡ MissionControl</h1>
-            <p class="subtitle">Proyectos & Tareas · HEO</p>
-        </div>
-        <div class="header-stats" id="headerStats"></div>
-    </header>
-
-    <div class="controls">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Buscar proyecto o tarea...">
-        </div>
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="priority">🔥 Prioridad</button>
-            <button class="filter-btn" data-filter="active">🚀 En curso</button>
-            <button class="filter-btn" data-filter="idea">💡 Ideas</button>
-            <button class="filter-btn" data-filter="teaching">📚 Docencia</button>
-            <button class="filter-btn" data-filter="paused">⏸ Pausado</button>
-            <button class="filter-btn" data-filter="done">✅ Cerrado</button>
-        </div>
-    </div>
-
-    <main id="projectGrid" class="project-grid"></main>
-
-    <!-- Modal para editar/ver proyecto -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 id="modalTitle"></h2>
-                <button class="modal-close" id="modalClose">&times;</button>
+    <!-- ========== VISTA GRID ========== -->
+    <div id="gridView">
+        <header>
+            <div class="header-content">
+                <h1>⚡ MissionControl</h1>
+                <p class="subtitle">Proyectos & Vida · HEO</p>
             </div>
-            <div class="modal-body" id="modalBody"></div>
+            <div class="header-stats" id="headerStats"></div>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar proyecto o tarea...">
+            </div>
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="priority">🔥 Prioridad</button>
+                <button class="filter-btn" data-filter="active">🚀 En curso</button>
+                <button class="filter-btn" data-filter="idea">💡 Ideas</button>
+                <button class="filter-btn" data-filter="teaching">📚 Docencia</button>
+                <button class="filter-btn" data-filter="gaming">🎮 Gaming</button>
+                <button class="filter-btn" data-filter="skills">🧠 Habilidades</button>
+                <button class="filter-btn" data-filter="home">🏠 Casa & Cocina</button>
+                <button class="filter-btn" data-filter="personal">🌱 Personal</button>
+                <button class="filter-btn" data-filter="paused">⏸ Pausado</button>
+                <button class="filter-btn" data-filter="done">✅ Cerrado</button>
+            </div>
         </div>
+
+        <main id="projectGrid" class="project-grid"></main>
+
+        <button class="fab" id="fabAdd" title="Añadir proyecto">+</button>
     </div>
 
-    <!-- Modal para añadir proyecto -->
-    <button class="fab" id="fabAdd" title="Añadir proyecto">+</button>
+    <!-- ========== VISTA DETALLE (página completa) ========== -->
+    <div id="detailView" class="detail-view hidden">
+        <div class="detail-topbar">
+            <button class="back-btn" id="backBtn">← Volver</button>
+            <div class="detail-topbar-actions">
+                <button class="topbar-btn" id="detailDeleteBtn">Eliminar</button>
+            </div>
+        </div>
+        <div class="detail-page" id="detailPage"></div>
+    </div>
+
+    <!-- ========== MODAL añadir proyecto ========== -->
     <div class="modal-overlay" id="addModalOverlay">
         <div class="modal">
             <div class="modal-header">
@@ -68,6 +76,10 @@
                             <option value="active">🚀 En curso</option>
                             <option value="idea">💡 Idea</option>
                             <option value="teaching">📚 Docencia</option>
+                            <option value="gaming">🎮 Gaming</option>
+                            <option value="skills">🧠 Habilidades</option>
+                            <option value="home">🏠 Casa & Cocina</option>
+                            <option value="personal">🌱 Personal</option>
                             <option value="paused">⏸ Pausado</option>
                         </select>
                     </label>
