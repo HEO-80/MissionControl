@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MissionControl · HEO</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>⚡ MissionControl</h1>
+            <p class="subtitle">Proyectos & Tareas · HEO</p>
+        </div>
+        <div class="header-stats" id="headerStats"></div>
+    </header>
+
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar proyecto o tarea...">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="priority">🔥 Prioridad</button>
+            <button class="filter-btn" data-filter="active">🚀 En curso</button>
+            <button class="filter-btn" data-filter="idea">💡 Ideas</button>
+            <button class="filter-btn" data-filter="teaching">📚 Docencia</button>
+            <button class="filter-btn" data-filter="paused">⏸ Pausado</button>
+            <button class="filter-btn" data-filter="done">✅ Cerrado</button>
+        </div>
+    </div>
+
+    <main id="projectGrid" class="project-grid"></main>
+
+    <!-- Modal para editar/ver proyecto -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Modal para añadir proyecto -->
+    <button class="fab" id="fabAdd" title="Añadir proyecto">+</button>
+    <div class="modal-overlay" id="addModalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Nuevo Proyecto</h2>
+                <button class="modal-close" id="addModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addProjectForm">
+                    <label>Nombre
+                        <input type="text" id="newName" required>
+                    </label>
+                    <label>Repo GitHub (opcional)
+                        <input type="text" id="newRepo" placeholder="HEO-80/repo-name">
+                    </label>
+                    <label>Descripción
+                        <textarea id="newDesc" rows="2"></textarea>
+                    </label>
+                    <label>Categoría
+                        <select id="newCategory">
+                            <option value="priority">🔥 Prioridad</option>
+                            <option value="active">🚀 En curso</option>
+                            <option value="idea">💡 Idea</option>
+                            <option value="teaching">📚 Docencia</option>
+                            <option value="paused">⏸ Pausado</option>
+                        </select>
+                    </label>
+                    <label>Progreso (%)
+                        <input type="number" id="newProgress" min="0" max="100" value="0">
+                    </label>
+                    <button type="submit" class="btn-primary">Crear proyecto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
